@@ -1,35 +1,25 @@
-package database
+package main
 
 import (
-	"fmt"
-	"os"
-	"redesign_kel3/models"
+	"redesign_kel3/config"
+	"redesign_kel3/database"
+	"redesign_kel3/routes"
 
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
-var DB *gorm.DB
+func main() {
+	config.ENVLoad()
+	database.DBLoad()
+	database.DBMigrate()
+	app := fiber.New()
+	app.Use(cors.New(cors.Config{
+		AllowOrigins:     "http://localhost:3000, http://localhost:5173/",
+		AllowCredentials: true,
+	}))
+	app.Static("/assets", "./assets")
 
-func DBLoad() {
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		os.Getenv("DB_USER"),
-		os.Getenv("DB_PASS"),
-		os.Getenv("DB_HOST"),
-		os.Getenv("DB_PORT"),
-		os.Getenv("DB_NAME"),
-	)
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	if err != nil {
-		panic("Failed to connect to database")
-	}
-	fmt.Println("Database connection established")
-	DB = db
-}
-
-func DBMigrate() {
-	if err := DB.Debug().AutoMigrate(&models.ProgramStudi{}); err != nil {
-		panic("Failed to migrate database")
-	}
-	fmt.Println("Database migration completed")
+	routes.RoutesList(app)
+	app.Listen(":8080")
 }

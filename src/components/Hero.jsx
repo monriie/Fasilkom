@@ -20,7 +20,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative w-full h-screen bg-cover bg-center transition-all duration-700"
+      className="relative font-[inter] w-full h-screen bg-cover bg-center transition-all duration-700"
       style={{
         backgroundImage: `url(${images[currentSlide]})`,
       }}
@@ -31,7 +31,7 @@ const Hero = () => {
       {/* Konten Hero */}
       <div className="relative z-10 flex flex-col h-full">
         {/* Top Bar dalam hero */}
-        <div className="flex justify-between items-center px-6 pt-10">
+        <div className="flex justify-between items-center px-6 pt-20">
           <div className="flex gap-3 items-center">
             <img src="./unsri.png" alt="Unsri Logo" className="w-16 h-16" />
             <div>
@@ -51,16 +51,16 @@ const Hero = () => {
               />
               <Search size={20} className="text-black" />
             </div>
-            <button>
+            <button className="cursor-pointer">
               <img src="./Menu.png" alt="Menu" className="w-8 h-8" />
             </button>
           </div>
         </div>
 
         {/* Tulisan Selamat Datang di tengah */}
-        <div className="flex flex-1 justify-center items-center">
-          <h1 className="px-100 text-5xl md:text-6xl font-bold text-white drop-shadow-lg">
-            Selamat Datang di Fakultas Ilmu Komputer <span className="grid">Universitas Sriwijaya</span>
+        <div className="flex flex-1 justify-center items-center text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">
+            Selamat Datang di <span className="block">Fakultas Ilmu Komputer</span><span className="block">Universitas Sriwijaya</span>
           </h1>
         </div>
       </div>

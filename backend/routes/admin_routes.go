@@ -9,7 +9,7 @@ import (
 
 func adminRoutes(api fiber.Router) {
 	admin := api.Group("/admin")
-	admin.Post("/signup", middlewares.Auth, controllers.SignUp)
+	admin.Post("/signup", controllers.SignUp)
 	admin.Post("/login", controllers.Login)
 	admin.Post("/sync-programstudi", middlewares.Auth, controllers.SyncProgramStudiCache)
 	admin.Post("/logout", middlewares.Auth, controllers.Logout)

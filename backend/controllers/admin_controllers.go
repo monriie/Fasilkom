@@ -95,8 +95,10 @@ func Login(c *fiber.Ctx) error {
 		SameSite: "Strict",
 	})
 
+
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Login Successfully",
+		"token": token,
 	})
 }
 

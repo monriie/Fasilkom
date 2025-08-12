@@ -195,5 +195,8 @@ func DeleteProgramStudi(c *fiber.Ctx) error {
 		})
 	}
 
-	return c.SendStatus(fiber.StatusNoContent)
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message":      "Program studi delete successfully",
+		"programstudi": programStudi,
+	})
 }

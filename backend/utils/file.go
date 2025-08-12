@@ -10,9 +10,10 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func SaveFile(c *fiber.Ctx, fieldName string, isCover bool) (string, error) {
+func SaveFile(c *fiber.Ctx, fieldName string, isProgramStudi bool) (string, error) {
 	file, err := c.FormFile(fieldName)
 	if err != nil {
+		fmt.Println("Error saat mengambil file dari form:", err) // Tambahan
 		return "", err
 	}
 
@@ -22,25 +23,28 @@ func SaveFile(c *fiber.Ctx, fieldName string, isCover bool) (string, error) {
 		".jpg":  true,
 		".jpeg": true,
 	}
-	if !isCover {
+	if !isProgramStudi {
 		allowedExt[".pdf"] = true
 	}
 
 	if !allowedExt[ext] {
-		return "", fmt.Errorf("invalid file type")
+		err := fmt.Errorf("invalid file type")
+		fmt.Println("Error: Tipe file tidak valid:", err) // Tambahan
+		return "", err
 	}
 
 	newFilename := fmt.Sprintf("%d%s", time.Now().UnixNano(), ext)
 
 	saveDir := "./assets/files/"
 	publicPath := "/assets/files/"
-	if isCover {
-		saveDir = "./assets/covers/"
-		publicPath = "/assets/covers/"
+	if isProgramStudi {
+		saveDir = "./assets/logo/"
+		publicPath = "/assets/logo/"
 	}
 
 	savePath := filepath.Join(saveDir, newFilename)
 	if err := c.SaveFile(file, savePath); err != nil {
+		fmt.Println("Error saat menyimpan file:", err) // Tambahan
 		return "", err
 	}
 

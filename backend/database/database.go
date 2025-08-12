@@ -28,7 +28,7 @@ func DBLoad() {
 }
 
 func DBMigrate() {
-	if err := DB.Debug().AutoMigrate(&models.ProgramStudi{}); err != nil {
+	if err := DB.Debug().AutoMigrate(&models.ProgramStudi{}, &models.Admin{}); err != nil {
 		panic("Failed to migrate database")
 	}
 	fmt.Println("Database migration completed")

@@ -10,6 +10,14 @@
   --muted: #D3D3D3;
 }
 
+.scrollbar-hide {
+  -webkit-overflow-scrolling: touch;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 html {
   scroll-behavior: smooth;
+  /* overflow-x: hidden; */
 }

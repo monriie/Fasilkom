@@ -2,7 +2,7 @@ const AgendaCard = ({ item, isPlaceholder = false }) => {
   if (isPlaceholder) {
     return (
       <article className="col-span-1 group cursor-pointer">
-        <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 flex items-center justify-center h-48 md:h-64 lg:h-48">
+        <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 flex items-center justify-center h-48 md:h-64 lg:h-53">
           <div className="text-center">
             <h3 className="text-base md:text-lg lg:text-xl font-semibold">
               Lihat agenda lainnya
@@ -19,7 +19,7 @@ const AgendaCard = ({ item, isPlaceholder = false }) => {
         <img 
           src={item.image} 
           alt={item.title}
-          className="w-full h-40 md:h-46 lg:h-37 object-cover"
+          className="w-full h-32 md:h-46 lg:h-37 object-cover"
         />
         <div className="p-2">
           <h3 className="font-semibold text-sm md:text-base lg:text-sm mb-2 line-clamp-2">

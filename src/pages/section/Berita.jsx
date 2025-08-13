@@ -20,9 +20,9 @@ const Berita = () => {
   const regularItems = newsItems.slice(1, 3); // Ambil maksimal 2 item untuk card biasa
 
   return (
-    <section className="font-[inter] mt-4">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold sm:mb-0 border-b-2 pr-20 pb-2 border-[#D3D3D3]">
+    <section className="font-[inter] mt-4 w-full">
+      <div className="flex flex-col text-left my-8">
+        <h2 className="ttext-2xl md:text-3xl lg:text-4xl font-bold mb-8 pb-2 sm:mb-0 border-b-2 border-[#D3D3D3]">
           Berita
         </h2>
       </div>

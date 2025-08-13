@@ -1,4 +1,5 @@
-import TopBar from "../components/hero/TopBar";
+import TopBar from "../components/hero/Topbar";
+import Navigasi from "../components/hero/Navigasi";
 import Hero from "../components/hero/Hero";
 import Navbar from "../components/Navbar";
 import Prodi from "./section/Prodi";
@@ -72,9 +73,11 @@ const Home = () => {
         role="banner"
       >
         <TopBar isVisible={isTopBarVisible} />
+
       </div>
 
       <main>
+        <Navigasi/>
         <Hero />
 
         <nav
@@ -89,8 +92,9 @@ const Home = () => {
         <Prodi />
         <Akademik />
         <KelPenelitian />
-        <section className="flex flex-col md:flex-row lg:flex-row lg:items-start lg:justify-center lg:gap-4 px-4 lg:px-12">
+        <section className="flex flex-col p-4 items-center justify-around md:flex-row lg:flex-row">
           <Mahasiswa/>
+          <div className="md:h-100 lg:h-100 md:border-2 md:border-[#D3D3D3] md:rounded-2xl lg:border-2 lg:border-[#D3D3D3] lg:rounded-2xl"/>
           <Beasiswa/>
         </section>
         <Ormawa/>

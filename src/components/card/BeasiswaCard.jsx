@@ -1,6 +1,6 @@
 const BeasiswaCard = () => {
   return (
-    <article className="font-[inter] flex items-center p-4 w-full lg:max-w-2xl border-b border-gray-300 cursor-pointer transition-colors">
+    <article className="font-[inter] w-85 lg:w-160 flex py-2 lg:py-4 items-center border-b border-gray-300 cursor-pointer transition-colors">
       <img 
         className="w-16 h-16 lg:w-60 lg:h-36 lg:mr-4 object-cover rounded"
       />

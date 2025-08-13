@@ -26,7 +26,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
   return (
     <>      
       {/* Mobile Menu Content */}
-      <div className="w-full lg:flex lg:flex-row bg-[#D3D3D3] z-50 transform transition-transform duration-300 ease-in-out shadow-2xl">
+      <div className="font-[inter] w-full lg:flex lg:flex-row bg-[#D3D3D3] z-50 transform transition-transform duration-300 ease-in-out shadow-2xl">
         <div className="lg:w-70 lg:border-[#6F370F] lg:border-1"/>
         {/* Menu Items */}
         <nav className="flex flex-col flex-1">

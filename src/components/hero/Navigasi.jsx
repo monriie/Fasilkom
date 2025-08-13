@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <>
       {/* Header Navigation */}
-      <header className={`${isMobileMenuOpen ? "relative bg-[#D3D3D3]" : "absolute bg-none"} top-0 left-0 right-0 z-20 px-4 pt-16 pb-4 sm:px-6 sm:pt-20 md:px-8`}>
+      <header className={`${isMobileMenuOpen ? "relative bg-[#D3D3D3]" : "absolute bg-none"} font-[inter] top-0 left-0 right-0 z-20 px-4 pt-16 pb-4 sm:px-6 sm:pt-20 md:px-8`}>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start lg:items-center">
           {/* Logo and Title */}
           <div className="flex items-center gap-3 sm:gap-4">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { X, ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const MobileMenu = ({ isOpen, onClose }) => {
   const [expandedMenus, setExpandedMenus] = useState({
@@ -14,19 +14,6 @@ const MobileMenu = ({ isOpen, onClose }) => {
     }));
   };
 
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
   // Reset expanded menus when menu closes
   useEffect(() => {
     if (!isOpen) {
@@ -37,23 +24,17 @@ const MobileMenu = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <>
-      {/* Overlay */}
-      <div 
-        className="fixed inset-0 bg-black/50 z-50"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-      
+    <>      
       {/* Mobile Menu Content */}
-      <div className="fixed top-0 right-0 w-80 bg-gray-100 z-50 transform transition-transform duration-300 ease-in-out shadow-2xl">
+      <div className="w-full lg:flex lg:flex-row bg-[#D3D3D3] z-50 transform transition-transform duration-300 ease-in-out shadow-2xl">
+        <div className="lg:w-70 lg:border-[#6F370F] lg:border-1"/>
         {/* Menu Items */}
-        <nav className="flex-1 overflow-y-auto">
-          {/* PROFILE Menu */}
-          <div className="border-b border-gray-200">
+        <nav className="flex flex-col flex-1">
+          {/* profile Menu */}
+          <div>
             <button
               onClick={() => toggleSubmenu('profile')}
-              className="w-full flex items-center justify-between p-4 bg-[#8B4513] text-white font-medium hover:bg-[#654321] transition-colors"
+              className="w-full flex items-center justify-between p-4 bg-[#6F370F] text-white font-medium transition-colors"
             >
               <span>PROFILE</span>
               {expandedMenus.profile ? 
@@ -63,21 +44,21 @@ const MobileMenu = ({ isOpen, onClose }) => {
             </button>
             
             {expandedMenus.profile && (
-              <div className="bg-[#8B4513] text-white">
-                <a href="#" className="block px-6 py-2 text-sm hover:bg-[#654321] border-b border-[#654321]">PROFILE</a>
-                <a href="#" className="block px-6 py-2 text-sm hover:bg-[#654321] border-b border-[#654321]">VISI & MISI</a>
-                <a href="#" className="block px-6 py-2 text-sm hover:bg-[#654321] border-b border-[#654321]">STRUKTUR ORGANISASI FASILKOM</a>
-                <a href="#" className="block px-6 py-2 text-sm hover:bg-[#654321] border-b border-[#654321]">KERJA SAMA</a>
-                <a href="#" className="block px-6 py-2 text-sm hover:bg-[#654321]">GRUP RISET</a>
+              <div className="bg-[#6F370F] text-white">
+                <a href="#" className="block px-6 py-2 text-sm ">PROFILE</a>
+                <a href="#" className="block px-6 py-2 text-sm ">VISI & MISI</a>
+                <a href="#" className="block px-6 py-2 text-sm ">STRUKTUR ORGANISASI FASILKOM</a>
+                <a href="#" className="block px-6 py-2 text-sm  ">KERJA SAMA</a>
+                <a href="#" className="block px-6 py-2 text-sm">GRUP RISET</a>
               </div>
             )}
           </div>
 
           {/* UNIT Menu */}
-          <div className="border-b border-gray-200">
+          <div>
             <button
               onClick={() => toggleSubmenu('unit')}
-              className="w-full flex items-center justify-between p-4 bg-gray-100 text-gray-800 font-medium hover:bg-gray-50 transition-colors"
+              className="w-full flex items-center justify-between p-4 bg-[#D3D3D3] text-[#6F370F] font-medium transition-colors"
             >
               <span>UNIT</span>
               {expandedMenus.unit ? 
@@ -87,31 +68,31 @@ const MobileMenu = ({ isOpen, onClose }) => {
             </button>
             
             {expandedMenus.unit && (
-              <div className="bg-gray-50">
-                <a href="#" className="block px-6 py-2 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-200">LABORATORIUM</a>
-                <a href="#" className="block px-6 py-2 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-200">ICT</a>
-                <a href="#" className="block px-6 py-2 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-200">UNIT PENJAMINAN MUTU (UPM)</a>
-                <a href="#" className="block px-6 py-2 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-200">LAYANAN RISET & INOVASI</a>
-                <a href="#" className="block px-6 py-2 text-sm text-gray-700 hover:bg-gray-100">UPPM</a>
+              <div className="bg-[#D3D3D3]">
+                <a href="#" className="block px-6 py-2 text-sm ">LABORATORIUM</a>
+                <a href="#" className="block px-6 py-2 text-sm ">ICT</a>
+                <a href="#" className="block px-6 py-2 text-sm ">UNIT PENJAMINAN MUTU (UPM)</a>
+                <a href="#" className="block px-6 py-2 text-sm ">LAYANAN RISET & INOVASI</a>
+                <a href="#" className="block px-6 py-2 text-sm">UPPM</a>
               </div>
             )}
           </div>
 
           {/* DOSEN & PEGAWAI */}
-          <div className="border-b border-gray-200">
+          <div>
             <a
               href="#"
-              className="block p-4 bg-[#8B4513] text-white font-medium hover:bg-[#654321] transition-colors"
+              className="block p-4 bg-[#6F370F] text-white font-medium transition-colors"
             >
               DOSEN & PEGAWAI
             </a>
           </div>
 
           {/* Z I */}
-          <div className="border-b border-gray-200">
+          <div>
             <a
               href="#"
-              className="block p-4 bg-gray-100 text-gray-800 font-medium hover:bg-gray-50 transition-colors"
+              className="block p-4 bg-[#D3D3D3] text-[#6F370F] font-medium transition-colors"
             >
               Z I
             </a>
@@ -121,7 +102,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
           <div>
             <a
               href="#"
-              className="block p-4 bg-[#8B4513] text-white font-medium hover:bg-[#654321] transition-colors"
+              className="block p-4 bg-[#6F370F] text-white font-medium transition-colors"
             >
               E-PPT
             </a>

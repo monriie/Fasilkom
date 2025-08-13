@@ -19,7 +19,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative font-[inter] w-auto h-110 xl:h-185 bg-cover bg-center transition-all duration-700"
+      className="sticky font-[inter] w-full h-110 xl:h-185 bg-cover bg-center transition-all duration-700"
       style={{
         backgroundImage: `url(${images[currentSlide]})`,
       }}

@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -38,7 +37,7 @@ const Navbar = ({ isFixed, isVisible }) => {
           <ul className="hidden lg:flex font-light text-black justify-center gap-4 xl:gap-6">
             {navItems.map((item) => (
               <li key={item.to}>
-                <Link
+                <a href=""
                   to={item.to}
                   aria-label={item.ariaLabel}
                   className="
@@ -48,12 +47,11 @@ const Navbar = ({ isFixed, isVisible }) => {
                     rounded-2xl cursor-pointer
                     hover:bg-[#FFFF00] active:bg-[#FFFF00]
                     transition-colors duration-200
-                    focus:outline-none focus:ring-2 focus:ring-[#6F370F] focus:ring-offset-2
                     text-sm xl:text-base
                   "
                 >
                   {item.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -62,7 +60,7 @@ const Navbar = ({ isFixed, isVisible }) => {
           <ul className="hidden md:flex lg:hidden font-light text-black justify-between gap-2">
             {navItems.map((item) => (
               <li key={item.to}>
-                <Link
+                <a href=""
                   to={item.to}
                   aria-label={item.ariaLabel}
                   className="
@@ -72,12 +70,11 @@ const Navbar = ({ isFixed, isVisible }) => {
                     rounded-xl cursor-pointer
                     hover:bg-[#FFFF00] active:bg-[#FFFF00]
                     transition-colors duration-200
-                    focus:outline-none focus:ring-2 focus:ring-[#6F370F] focus:ring-offset-2
                     text-base
                   "
                 >
                   {item.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -92,7 +89,7 @@ const Navbar = ({ isFixed, isVisible }) => {
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label="Toggle navigation menu"
-              className="p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6F370F] focus:ring-offset-2"
+              className="p-2 "
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6 text-[#6F370F]" />
@@ -119,7 +116,7 @@ const Navbar = ({ isFixed, isVisible }) => {
             <ul className="space-y-2">
               {navItems.map((item) => (
                 <li key={item.to}>
-                  <Link
+                  <a href=""
                     to={item.to}
                     onClick={closeMobileMenu}
                     aria-label={item.ariaLabel}
@@ -134,7 +131,7 @@ const Navbar = ({ isFixed, isVisible }) => {
                     "
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

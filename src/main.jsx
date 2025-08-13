@@ -1,11 +1,10 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App'
+import Home from './pages/Home'
 import {BrowserRouter} from 'react-router'
-// import ThemeProvider from './context/ThemeContext'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <App />
+    <Home />
   </BrowserRouter>
 )

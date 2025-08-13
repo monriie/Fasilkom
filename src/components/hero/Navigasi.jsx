@@ -22,9 +22,8 @@ const Navbar = () => {
   return (
     <>
       {/* Header Navigation */}
-      <header className="absolute top-0 left-0 right-0 z-20 px-4 pt-16 sm:px-6 sm:pt-20 md:px-8 lg:px-12">
+      <header className={`${isMobileMenuOpen ? "relative bg-[#D3D3D3]" : "absolute bg-none"} top-0 left-0 right-0 z-20 px-4 pt-16 pb-4 sm:px-6 sm:pt-20 md:px-8`}>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start lg:items-center">
-          
           {/* Logo and Title */}
           <div className="flex items-center gap-3 sm:gap-4">
             <img 
@@ -76,7 +75,6 @@ const Navbar = () => {
             >
               <Menu className="w-6 h-6 md:w-8 md:h-8 text-white" />
             </button>
-            <MobileMenu/>
           </div>
 
           {/* Mobile Search and Menu */}
@@ -103,7 +101,6 @@ const Navbar = () => {
                   <Search size={16} className="text-black ml-2" />
                 </button>
               </div>
-              <MobileMenu/>
             </div>
             
             <button 

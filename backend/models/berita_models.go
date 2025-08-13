@@ -9,5 +9,6 @@ import (
 type Berita struct {
 	gorm.Model
 	CoverBerita string    `json:"coverberita" gorm:"not null"`
+	Deskripsi   string    `json:"deskripsi" gorm:"not null"`
 	PostedAt    time.Time `json:"posted_at"`
 }

@@ -92,7 +92,7 @@ const Home = () => {
         <Prodi />
         <Akademik />
         <KelPenelitian />
-        <section id="Mahasiswa" className="flex flex-col p-4 items-center justify-around md:flex-row lg:flex-row">
+        <section id="Mahasiswa" className="flex flex-col px-4 pt-8 pb-4 items-center justify-around md:flex-row lg:flex-row">
           <Mahasiswa/>
           <div className="md:h-100 lg:h-100 md:border-2 md:border-[#D3D3D3] md:rounded-2xl lg:border-2 lg:border-[#D3D3D3] lg:rounded-2xl"/>
           <Beasiswa/>

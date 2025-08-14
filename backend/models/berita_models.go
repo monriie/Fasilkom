@@ -12,3 +12,7 @@ type Berita struct {
 	Deskripsi   string    `json:"deskripsi" gorm:"not null"`
 	PostedAt    time.Time `json:"posted_at"`
 }
+
+func (Berita) TableName() string {
+    return "beritas"
+}

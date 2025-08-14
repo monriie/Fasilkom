@@ -78,7 +78,7 @@ const Prodi = () => {
   if(loading) return <Loading/>
 
   return (
-    <section className="flex flex-col md:flex-row max-h-screen">
+    <section id="Prodi" className="flex flex-col md:flex-row max-h-screen">
       {/* Left Section - Title */}
       <div
         className="
@@ -109,7 +109,7 @@ const Prodi = () => {
         className="
           flex h-auto
           bg-cover bg-center bg-no-repeat items-center justify-center
-          px-4 lg:px-12 xl:w-full
+          px-4 md:px-0 lg:px-0 md:w-full lg:w-full xl:w-full md:justify-end lg:justify-end
           py-8 lg:py-20
           relative
         "
@@ -117,8 +117,11 @@ const Prodi = () => {
           backgroundImage: `url(../bg3.png)`,
         }}
       >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-[#6F370F]/30" aria-hidden="true" />
+      
         {/* Slider Container */}
-        <div className="w-full max-w-xl xl:max-w-5xl relative">
+        <div className="w-full max-w-xl lg:max-3xl xl:max-w-5xl relative">
           {/* Navigation Buttons */}
           <button
             onClick={scrollLeft}
@@ -170,7 +173,7 @@ const Prodi = () => {
             {prodiData?.map((prodi) => (
               <div key={prodi.ID} className="flex-shrink-1 snap-center mx-2">
                 <ProdiCard
-                  judul={prodi.jurusan}
+                  jurusan={prodi.jurusan}
                   deskripsi={prodi.deskripsi}
                   akreditasi={prodi.akreditasi}
                   jenjang={prodi.jenjang}

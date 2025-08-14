@@ -2,7 +2,7 @@ import { MapPin, Mail, Phone, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="font-[inter] bg-gray-200 pt-12 pb-6">
+    <footer id="Kontak" className="font-[inter] bg-gray-200 pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           {/* Logo & Title */}
@@ -19,24 +19,29 @@ const Footer = () => {
           {/* Lokasi */}
           <div>
             <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
-              <MapPin className="w-5 h-5 mr-2" />
               LOKASI
             </h4>
             <div className="space-y-4 text-sm md:text-base text-gray-600">
-              <div>
-                <h5 className="font-medium text-gray-800 mb-1">Kampus Utama</h5>
-                <address className="not-italic">
-                  Palembang - Prabumulih KM.32<br />
-                  Kabupaten Ogan Ilir, Sumatera Selatan,<br />
-                  Indonesia
-                </address>
+              <div className='flex gap-1'>
+                <img src='../Map.png' className="w-5 h-5 mr-2" />
+                <div>
+                  <h5 className="font-medium text-gray-800 mb-1">Kampus Utama</h5>
+                  <address className="not-italic">
+                    Palembang - Prabumulih KM.32<br />
+                    Kabupaten Ogan Ilir, Sumatera Selatan,<br />
+                    Indonesia
+                  </address>
+                </div>
               </div>
-              <div>
-                <h5 className="font-medium text-gray-800 mb-1">Kampus Palembang</h5>
-                <address className="not-italic">
-                  Jl. Srijaya Negara Bukit Besar Palembang<br />
-                  30139
-                </address>
+              <div className='flex gap-1'>
+                <img src='../Map.png' className="w-5 h-5 mr-2" />
+                <div>
+                  <h5 className="font-medium text-gray-800 mb-1">Kampus Palembang</h5>
+                  <address className="not-italic">
+                    Jl. Srijaya Negara Bukit Besar Palembang<br />
+                    30139
+                  </address>
+                </div>
               </div>
             </div>
           </div>
@@ -46,25 +51,25 @@ const Footer = () => {
             <h4 className="font-semibold text-gray-900 mb-4">KONTAK</h4>
             <div className="space-y-3 text-sm md:text-base">
               <div className="flex items-center text-gray-600">
-                <Mail className="w-5 h-5 mr-3 flex-shrink-0" />
+                <img src='../mail(1).png' className="w-5 h-5 mr-3 flex-shrink-0" />
                 <a href="mailto:humas@ilkom.unsri.ac.id" className="hover:text-blue-600 transition-colors">
                   humas@ilkom.unsri.ac.id
                 </a>
               </div>
               <div className="flex items-center text-gray-600">
-                <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
+                <img src='../Phone(1).png' className="w-5 h-5 mr-3 flex-shrink-0" />
                 <a href="tel:(0711)379249" className="hover:text-blue-600 transition-colors">
                   (0711) 379249
                 </a>
               </div>
               <div className="flex items-center text-gray-600">
-                <Instagram className="w-5 h-5 mr-3 flex-shrink-0" />
+                <img src='../Instagram.png' className="w-5 h-5 mr-3 flex-shrink-0" />
                 <a href="#" className="hover:text-blue-600 transition-colors">
                   Humas Fasilkom Unsri
                 </a>
               </div>
               <div className="flex items-center text-gray-600">
-                <Facebook className="w-5 h-5 mr-3 flex-shrink-0" />
+                <img src='../Facebook.png' className="w-5 h-5 mr-3 flex-shrink-0" />
                 <a href="#" className="hover:text-blue-600 transition-colors">
                   Humas Fasilkom Unsri
                 </a>

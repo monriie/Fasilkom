@@ -1,11 +1,11 @@
-const ProdiCard = ({title,description, accreditation,level}) => {
+const ProdiCard = ({ akreditasi,jenjang, jurusan, deskripsi}) => {
 
   return (
     <article 
       className="
         font-[inter] bg-white 
         flex flex-col justify-between px-2 py-2
-        rounded-2xl h-80 shadow-lg hover:shadow-xl
+        rounded-2xl h-80 lg:h-85 shadow-lg hover:shadow-xl
         transition-all duration-300 ease-in-out
         w-72 lg:w-[420px] xl:w-[450px]
       "
@@ -31,7 +31,7 @@ const ProdiCard = ({title,description, accreditation,level}) => {
             "
 
           >
-            {accreditation}
+            {akreditasi}
           </span>
           <span 
             className="
@@ -41,9 +41,8 @@ const ProdiCard = ({title,description, accreditation,level}) => {
               rounded-2xl border
               transition-colors duration-200
             "
-            aria-label={`Level ${level}`}
           >
-            {level}
+            {jenjang}
           </span>
         </div>
       </header>
@@ -57,7 +56,7 @@ const ProdiCard = ({title,description, accreditation,level}) => {
             leading-tight mb-3 
           "
         >
-          {title}
+          {jurusan}
         </h3>
         
         <p className="
@@ -65,7 +64,7 @@ const ProdiCard = ({title,description, accreditation,level}) => {
           text-base h-auto xl:text-lg
           leading-relaxed text-justify mb-4 line-clamp-3
         ">
-          {description}
+          {deskripsi}
         </p>
 
         {/* CTA Button */}

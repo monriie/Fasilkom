@@ -18,13 +18,9 @@ const AgendaCard = ({img, judul ,isPlaceholder = false }) => {
       <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
         <img 
           src={img}
+          alt={judul}
           className="w-full h-32 md:h-46 lg:h-37 object-cover"
         />
-        <div className="p-2">
-          <h3 className="font-semibold text-sm md:text-base lg:text-sm mb-2 line-clamp-2">
-            {judul}
-          </h3>
-        </div>
       </div>
     </article>
   );

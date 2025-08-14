@@ -5,11 +5,11 @@ const Navbar = ({ isFixed, isVisible }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { to: '/Prodi', label: 'Prodi', ariaLabel: 'Program Studi' },
-    { to: '/Akademik', label: 'Akademik', ariaLabel: 'Informasi Akademik' },
-    { to: '/Mahasiswa', label: 'Mahasiswa', ariaLabel: 'Portal Mahasiswa' },
-    { to: '/Informasi', label: 'Informasi', ariaLabel: 'Informasi Umum' },
-    { to: '/Kontak', label: 'Kontak', ariaLabel: 'Kontak Kami' }
+    { to: '/Prodi', label: 'Prodi' },
+    { to: '/Akademik', label: 'Akademik' },
+    { to: '/Mahasiswa', label: 'Mahasiswa' },
+    { to: '/Informasi', label: 'Informasi' },
+    { to: '/Kontak', label: 'Kontak' }
   ];
 
   const toggleMobileMenu = () => {
@@ -18,6 +18,21 @@ const Navbar = ({ isFixed, isVisible }) => {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navbarHeight = isFixed ? 80 : 0; // Sesuaikan dengan tinggi navbar Anda
+      const offsetTop = element.offsetTop - navbarHeight;
+      
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+    // Tutup mobile menu setelah klik
+    closeMobileMenu();
   };
 
   return (
@@ -30,19 +45,17 @@ const Navbar = ({ isFixed, isVisible }) => {
           px-4 py-3 sm:px-6 md:px-8 lg:px-12
         `}
         role="navigation"
-        aria-label="Main navigation"
       >
         <div className="font-[inter] max-w-7xl mx-auto">
           {/* Desktop Navigation */}
-          <ul className="hidden lg:flex font-light text-black justify-center gap-4 xl:gap-6">
+          <ul className="hidden lg:flex font-light text-black justify-between gap-10 py-2 xl:gap-6">
             {navItems.map((item) => (
               <li key={item.to}>
-                <a href=""
+                <a href={`#${item.label}`}
                   to={item.to}
-                  aria-label={item.ariaLabel}
                   className="
                     flex items-center justify-center
-                    px-4 py-3 xl:px-6 xl:py-4
+                    py-2 xl:px-6
                     w-full min-w-[180px] xl:min-w-[220px]
                     rounded-2xl cursor-pointer
                     hover:bg-[#FFFF00] active:bg-[#FFFF00]
@@ -60,12 +73,12 @@ const Navbar = ({ isFixed, isVisible }) => {
           <ul className="hidden md:flex lg:hidden font-light text-black justify-between gap-2">
             {navItems.map((item) => (
               <li key={item.to}>
-                <a href=""
+                <a href={`#${item.label}`}
                   to={item.to}
                   aria-label={item.ariaLabel}
                   className="
                     flex items-center justify-center
-                    px-3 py-3
+                    py-2
                     min-w-[120px]
                     rounded-xl cursor-pointer
                     hover:bg-[#FFFF00] active:bg-[#FFFF00]
@@ -89,7 +102,7 @@ const Navbar = ({ isFixed, isVisible }) => {
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label="Toggle navigation menu"
-              className="p-2 "
+              className="p-2"
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6 text-[#6F370F]" />
@@ -116,9 +129,8 @@ const Navbar = ({ isFixed, isVisible }) => {
             <ul className="space-y-2">
               {navItems.map((item) => (
                 <li key={item.to}>
-                  <a href=""
-                    to={item.to}
-                    onClick={closeMobileMenu}
+                  <button
+                    onClick={() => scrollToSection(item.to)}
                     aria-label={item.ariaLabel}
                     className="
                       block w-full text-center
@@ -126,12 +138,12 @@ const Navbar = ({ isFixed, isVisible }) => {
                       cursor-pointer
                       hover:bg-[#FFFF00] active:bg-[#FFFF00]
                       transition-colors duration-200
-                      
                       font-light text-black
+                      border-none bg-transparent
                     "
                   >
                     {item.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

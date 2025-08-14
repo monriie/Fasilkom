@@ -78,7 +78,7 @@ const Prodi = () => {
   if(loading) return <Loading/>
 
   return (
-    <section id="#Prodi" className="flex flex-col md:flex-row max-h-screen">
+    <section id="Prodi" className="flex flex-col md:flex-row max-h-screen">
       {/* Left Section - Title */}
       <div
         className="
@@ -117,6 +117,9 @@ const Prodi = () => {
           backgroundImage: `url(../bg3.png)`,
         }}
       >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-[#6F370F]/30" aria-hidden="true" />
+      
         {/* Slider Container */}
         <div className="w-full max-w-xl lg:max-3xl xl:max-w-5xl relative">
           {/* Navigation Buttons */}

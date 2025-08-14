@@ -29,7 +29,7 @@ const Akademik = () => {
 
   return (
     <>
-      <section id="#Akademik" className="font-[inter] bg-white py-5 px-8 md:py-8">
+      <section id="Akademik" className="font-[inter] bg-white py-5 px-8 md:py-8">
         <div>
           <h1 className="text-left text-2xl md:text-3xl lg:text-4xl font-bold border-b-2 border-[#D3D3D3]">
             Akademik & Penelitian

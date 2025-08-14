@@ -2,7 +2,7 @@ import { MapPin, Mail, Phone, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer id="#Kontak" className="font-[inter] bg-gray-200 pt-12 pb-6">
+    <footer id="Kontak" className="font-[inter] bg-gray-200 pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           {/* Logo & Title */}

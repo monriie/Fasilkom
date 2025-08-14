@@ -121,7 +121,7 @@ const Prodi = () => {
       <div className="absolute inset-0 bg-[#6F370F]/30" aria-hidden="true" />
       
         {/* Slider Container */}
-        <div className="w-full max-w-xl lg:max-3xl xl:max-w-5xl relative">
+        <div className="w-full max-w-xl md:max-w-2xl lg:max-3xl xl:max-w-5xl relative">
           {/* Navigation Buttons */}
           <button
             onClick={scrollLeft}

@@ -22,7 +22,7 @@ func GetAkademik(c *fiber.Ctx) error {
 	if cached, found := cache.GetAkademikCache(cacheKey); found {
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"akademik": cached,
-			"cache":  true,
+			"cache":    true,
 		})
 	}
 
@@ -45,7 +45,7 @@ func GetAkademik(c *fiber.Ctx) error {
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"akademik": akademik,
-		"cache":  false,
+		"cache":    false,
 	})
 }
 
@@ -60,6 +60,7 @@ func CreateAkademik(c *fiber.Ctx) error {
 	}
 
 	deskripsi := c.FormValue("deskripsi")
+	tanggalStr := c.FormValue("tanggal")
 
 	if postedAtStr := c.FormValue("posted_at"); postedAtStr != "" {
 		t, err := time.Parse(time.RFC3339, postedAtStr)
@@ -73,6 +74,21 @@ func CreateAkademik(c *fiber.Ctx) error {
 		akademik.PostedAt = time.Now()
 	}
 
+	if tanggalStr != "" {
+		t, err := time.Parse(time.RFC3339, tanggalStr)
+		if err != nil {
+			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+				"error": "Invalid tanggal format. Use ISO 8601 (RFC3339)",
+			})
+		}
+		akademik.Tanggal = t
+	} else {
+		// Jika tanggal tidak disediakan, Anda bisa mengatur nilai default atau mengembalikan error
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Tanggal is required",
+		})
+	}
+
 	akademik.CoverAkademik = cover
 	akademik.Deskripsi = deskripsi
 
@@ -83,8 +99,8 @@ func CreateAkademik(c *fiber.Ctx) error {
 	}
 
 	return c.Status(fiber.StatusCreated).JSON(fiber.Map{
-		"message": "Akademik created successfully",
-		"akademik":  akademik,
+		"message":  "Akademik created successfully",
+		"akademik": akademik,
 	})
 }
 
@@ -105,6 +121,16 @@ func UpdateAkademik(c *fiber.Ctx) error {
 
 	if deskripsi := c.FormValue("deskripsi"); deskripsi != "" {
 		akademik.Deskripsi = deskripsi
+	}
+
+	if tanggalStr := c.FormValue("tanggal"); tanggalStr != "" {
+		t, err := time.Parse(time.RFC3339, tanggalStr)
+		if err != nil {
+			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+				"error": "Invalid tanggal format. Use ISO 8601 (RFC3339)",
+			})
+		}
+		akademik.Tanggal = t
 	}
 
 	if _, err := c.FormFile("coverakademik"); err == nil {
@@ -134,8 +160,8 @@ func UpdateAkademik(c *fiber.Ctx) error {
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"message": "Akademik updated successfully",
-		"akademik":  akademik,
+		"message":  "Akademik updated successfully",
+		"akademik": akademik,
 	})
 }
 
@@ -161,7 +187,7 @@ func DeleteAkademik(c *fiber.Ctx) error {
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"message": "Akademik deleted successfully",
-		"akademik":  akademik,
+		"message":  "Akademik deleted successfully",
+		"akademik": akademik,
 	})
 }

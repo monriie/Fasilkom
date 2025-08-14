@@ -52,7 +52,9 @@ func GetBeasiswa(c *fiber.Ctx) error {
 func CreateBeasiswa(c *fiber.Ctx) error {
 	var beasiswa models.Beasiswa
 
-	cover, err := utils.SaveFile(c, "coverbeasiswa", false)
+	// **PERBAIKAN DI SINI:** Menambahkan argumen boolean keempat (isCover)
+	// false untuk isProgramStudi, true untuk isCover (karena ini cover beasiswa)
+	cover, err := utils.SaveFile(c, "coverbeasiswa", false, true)
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": err,
@@ -73,7 +75,7 @@ func CreateBeasiswa(c *fiber.Ctx) error {
 		beasiswa.PostedAt = time.Now()
 	}
 
-	beasiswa.CoverBeasiswa = cover
+	beasiswa.Coverbeasiswa = cover
 	beasiswa.Deskripsi = deskripsi
 
 	if err := database.DB.Create(&beasiswa).Error; err != nil {
@@ -108,13 +110,15 @@ func UpdateBeasiswa(c *fiber.Ctx) error {
 	}
 
 	if _, err := c.FormFile("coverbeasiswa"); err == nil {
-		cover, err := utils.SaveFile(c, "coverbeasiswa", false)
+		// **PERBAIKAN DI SINI:** Menambahkan argumen boolean keempat (isCover)
+		// false untuk isProgramStudi, true untuk isCover (karena ini cover beasiswa)
+		cover, err := utils.SaveFile(c, "coverbeasiswa", false, true)
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 				"error": err,
 			})
 		}
-		beasiswa.CoverBeasiswa = cover
+		beasiswa.Coverbeasiswa = cover
 	}
 
 	if postedAtStr := c.FormValue("posted_at"); postedAtStr != "" {

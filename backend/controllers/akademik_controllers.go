@@ -52,7 +52,9 @@ func GetAkademik(c *fiber.Ctx) error {
 func CreateAkademik(c *fiber.Ctx) error {
 	var akademik models.Akademik
 
-	cover, err := utils.SaveFile(c, "coverakademik", false)
+	// **PERBAIKAN DI SINI:** Menambahkan argumen boolean keempat (isCover)
+	// false untuk isProgramStudi, true untuk isCover
+	cover, err := utils.SaveFile(c, "coverakademik", false, true)
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": err,
@@ -83,13 +85,12 @@ func CreateAkademik(c *fiber.Ctx) error {
 		}
 		akademik.Tanggal = t
 	} else {
-		// Jika tanggal tidak disediakan, Anda bisa mengatur nilai default atau mengembalikan error
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Tanggal is required",
 		})
 	}
 
-	akademik.CoverAkademik = cover
+	akademik.Coverakademik = cover
 	akademik.Deskripsi = deskripsi
 
 	if err := database.DB.Create(&akademik).Error; err != nil {
@@ -133,14 +134,16 @@ func UpdateAkademik(c *fiber.Ctx) error {
 		akademik.Tanggal = t
 	}
 
+	// **PERBAIKAN DI SINI:** Ganti "cover" menjadi "coverakademik" dan tambahkan argumen keempat
 	if _, err := c.FormFile("coverakademik"); err == nil {
-		cover, err := utils.SaveFile(c, "coverakademik", false)
+		// false untuk isProgramStudi, true untuk isCover
+		cover, err := utils.SaveFile(c, "coverakademik", false, true)
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 				"error": err,
 			})
 		}
-		akademik.CoverAkademik = cover
+		akademik.Coverakademik = cover
 	}
 
 	if postedAtStr := c.FormValue("posted_at"); postedAtStr != "" {

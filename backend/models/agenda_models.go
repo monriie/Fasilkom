@@ -8,7 +8,7 @@ import (
 
 type Agenda struct {
 	gorm.Model
-	CoverAgenda string    `json:"coveragenda" gorm:"not null"`
+	Coveragenda string    `json:"coveragenda" gorm:"not null"`
 	Deskripsi   string    `json:"deskripsi" gorm:"not null"`
 	PostedAt    time.Time `json:"posted_at"`
 }

@@ -8,7 +8,7 @@ import (
 
 type Beasiswa struct {
 	gorm.Model
-	CoverBeasiswa string    `json:"coverbeasiswa" gorm:"not null"`
+	Coverbeasiswa string    `json:"coverbeasiswa" gorm:"not null"`
 	Deskripsi     string    `json:"deskripsi" gorm:"not null"`
 	PostedAt      time.Time `json:"posted_at"`
 }

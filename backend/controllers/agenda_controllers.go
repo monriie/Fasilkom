@@ -52,7 +52,9 @@ func GetAgenda(c *fiber.Ctx) error {
 func CreateAgenda(c *fiber.Ctx) error {
 	var agenda models.Agenda
 
-	cover, err := utils.SaveFile(c, "coveragenda", false)
+	// **PERBAIKAN DI SINI:** Menambahkan argumen boolean keempat (isCover)
+	// Asumsi: false untuk isProgramStudi, dan true untuk isCover (karena ini cover agenda)
+	cover, err := utils.SaveFile(c, "coveragenda", false, true) 
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": err,
@@ -73,7 +75,7 @@ func CreateAgenda(c *fiber.Ctx) error {
 		agenda.PostedAt = time.Now()
 	}
 
-	agenda.CoverAgenda = cover
+	agenda.Coveragenda = cover
 	agenda.Deskripsi = deskripsi
 
 	if err := database.DB.Create(&agenda).Error; err != nil {
@@ -108,13 +110,15 @@ func UpdateAgenda(c *fiber.Ctx) error {
 	}
 
 	if _, err := c.FormFile("coveragenda"); err == nil {
-		cover, err := utils.SaveFile(c, "coveragenda", false)
+		// **PERBAIKAN DI SINI:** Menambahkan argumen boolean keempat (isCover)
+		// Asumsi: false untuk isProgramStudi, dan true untuk isCover (karena ini cover agenda)
+		cover, err := utils.SaveFile(c, "coveragenda", false, true)
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 				"error": err,
 			})
 		}
-		agenda.CoverAgenda = cover
+		agenda.Coveragenda = cover
 	}
 
 	if postedAtStr := c.FormValue("posted_at"); postedAtStr != "" {

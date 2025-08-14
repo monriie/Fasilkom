@@ -52,7 +52,9 @@ func GetKemahasiswaan(c *fiber.Ctx) error {
 func CreateKemahasiswaan(c *fiber.Ctx) error {
 	var kemahasiswaan models.Kemahasiswaan
 
-	cover, err := utils.SaveFile(c, "coverkemahasiswaan", false)
+	// **FIX:** Add the missing boolean argument (isCover)
+	// false for isProgramStudi, true for isCover (as it is a cover)
+	cover, err := utils.SaveFile(c, "coverkemahasiswaan", false, true)
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": err,
@@ -73,7 +75,7 @@ func CreateKemahasiswaan(c *fiber.Ctx) error {
 		kemahasiswaan.PostedAt = time.Now()
 	}
 
-	kemahasiswaan.CoverKemahasiswaan = cover
+	kemahasiswaan.Coverkemahasiswaan = cover
 	kemahasiswaan.Deskripsi = deskripsi
 
 	if err := database.DB.Create(&kemahasiswaan).Error; err != nil {
@@ -108,13 +110,15 @@ func UpdateKemahasiswaan(c *fiber.Ctx) error {
 	}
 
 	if _, err := c.FormFile("coverkemahasiswaan"); err == nil {
-		cover, err := utils.SaveFile(c, "coverkemahasiswaan", false)
+		// **FIX:** Add the missing boolean argument (isCover)
+		// false for isProgramStudi, true for isCover (as it is a cover)
+		cover, err := utils.SaveFile(c, "coverkemahasiswaan", false, true)
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 				"error": err,
 			})
 		}
-		kemahasiswaan.CoverKemahasiswaan = cover
+		kemahasiswaan.Coverkemahasiswaan = cover
 	}
 
 	if postedAtStr := c.FormValue("posted_at"); postedAtStr != "" {

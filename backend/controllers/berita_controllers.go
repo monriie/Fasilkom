@@ -52,7 +52,9 @@ func GetBerita(c *fiber.Ctx) error {
 func CreateBerita(c *fiber.Ctx) error {
 	var berita models.Berita
 
-	cover, err := utils.SaveFile(c, "coverberita", false)
+	// **PERBAIKAN DI SINI:** Menambahkan argumen boolean keempat (isCover)
+	// false untuk isProgramStudi, true untuk isCover (karena ini cover berita)
+	cover, err := utils.SaveFile(c, "coverberita", false, true)
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": err,
@@ -73,7 +75,7 @@ func CreateBerita(c *fiber.Ctx) error {
 		berita.PostedAt = time.Now()
 	}
 
-	berita.CoverBerita = cover
+	berita.Coverberita = cover
 	berita.Deskripsi = deskripsi
 
 	if err := database.DB.Create(&berita).Error; err != nil {
@@ -108,13 +110,15 @@ func UpdateBerita(c *fiber.Ctx) error {
 	}
 
 	if _, err := c.FormFile("coverberita"); err == nil {
-		cover, err := utils.SaveFile(c, "coverberita", false)
+		// **PERBAIKAN DI SINI:** Menambahkan argumen boolean keempat (isCover)
+		// false untuk isProgramStudi, true untuk isCover (karena ini cover berita)
+		cover, err := utils.SaveFile(c, "coverberita", false, true)
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 				"error": err,
 			})
 		}
-		berita.CoverBerita = cover
+		berita.Coverberita = cover
 	}
 
 	if postedAtStr := c.FormValue("posted_at"); postedAtStr != "" {

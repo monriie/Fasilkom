@@ -69,7 +69,9 @@ func CreateProgramStudi(c *fiber.Ctx) error {
 	akreditasi := c.FormValue("akreditasi")
 	jenjang := c.FormValue("jenjang")
 
-	logo, err := utils.SaveFile(c, "logo", true)
+	// **PERBAIKAN DI SINI:** Menambahkan argumen boolean keempat (isCover)
+	// true for isProgramStudi, true for isCover (as it's a logo for programstudi)
+	logo, err := utils.SaveFile(c, "logo", true, true)
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": err,
@@ -142,7 +144,9 @@ func UpdateProgramStudi(c *fiber.Ctx) error {
 	}
 
 	if _, err := c.FormFile("logo"); err == nil {
-		logo, err := utils.SaveFile(c, "logo", true)
+		// **PERBAIKAN DI SINI:** Menambahkan argumen boolean keempat (isCover)
+		// true for isProgramStudi, true for isCover (as it's a logo for programstudi)
+		logo, err := utils.SaveFile(c, "logo", true, true)
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 				"error": err,
@@ -195,8 +199,8 @@ func DeleteProgramStudi(c *fiber.Ctx) error {
 		})
 	}
 
-		return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"message":      "Program studi delete successfully",
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message":      "Program studi deleted successfully",
 		"programstudi": programStudi,
 	})
 }

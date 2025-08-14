@@ -1,14 +1,45 @@
+import { useEffect, useState } from "react";
 import MahasiswaCard from "../../components/card/MahasiswaCard";
+import { getData } from "../../services/api";
+import Loading from "../../services/Loading";
 
 const Mahasiswa = () => {
+  const [mahasiswaData, setMahasiswaData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect (() => {
+      const fetchMahasiswa = async () => {
+        try {
+          setLoading(true);
+          const data = await getData("mahasiswa");
+          setMahasiswaData(data.mahasiswa);
+          console.log(data.mahasiswa);
+        } catch (err) {
+          console.error('Error fetching Mahasiswa data:', err);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchMahasiswa();
+    },[])
+  
+    if(loading) return <Loading/>
+
   return (
     <section className="font-[inter] flex flex-col px-4 mb-4 pb-2 lg:px-8 items-center justify-center">
       <h2 className="text-black mt-10 text-center text-2xl md:text-3xl lg:text-4xl font-bold">
         Kemahasiswaan <span className="md:block lg:inline">& Kerja Sama</span>
       </h2>
-      <div className="flex flex-col mt-4 w-full">
-        <MahasiswaCard />
-      </div>
+      {mahasiswaData?.map((mahasiswa) => (
+        <div key={mahasiswa.ID} className="flex flex-col mt-4 w-full">
+          <MahasiswaCard 
+            img={mahasiswa.img}
+            judul={mahasiswa.judul}
+            upload={mahasiswa.postedby}
+          />
+        </div>
+      ))}
       <button className="text-base w-85 lg:w-160 px-5 lg:py-2 lg:font-semibold lg:text-3xl border-b border-r border-l rounded-b-xl border-[#D3D3D3] hover:bg-gray-50 transition-colors">
         Lihat lainnya
       </button>

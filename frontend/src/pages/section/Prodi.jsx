@@ -2,6 +2,7 @@ import ProdiCard from "../../components/card/ProdiCard";
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Loading from "../../services/Loading";
+import { getData } from "../../services/api";
 
 const Prodi = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -14,15 +15,9 @@ const Prodi = () => {
     const fetchProdi = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:8080/api/programstudi');
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
+        const data = await getData("programstudi");
         setProdiData(data.programstudi);
-        console.log(data.programstudi)
+        console.log(data.programstudi);
       } catch (err) {
         console.error('Error fetching prodi data:', err);
       } finally {
@@ -175,10 +170,10 @@ const Prodi = () => {
             {prodiData?.map((prodi) => (
               <div key={prodi.ID} className="flex-shrink-1 snap-center mx-2">
                 <ProdiCard
-                  title={prodi.jurusan}
-                  description={prodi.deskripsi}
-                  accreditation={prodi.akreditasi}
-                  level={prodi.jenjang}
+                  judul={prodi.jurusan}
+                  deskripsi={prodi.deskripsi}
+                  akreditasi={prodi.akreditasi}
+                  jenjang={prodi.jenjang}
                 />
               </div>
             ))}

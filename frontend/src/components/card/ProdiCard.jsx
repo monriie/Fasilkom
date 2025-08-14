@@ -1,5 +1,3 @@
-// import { useState } from 'react';
-
 const ProdiCard = ({title,description, accreditation,level}) => {
 
   return (
@@ -7,9 +5,9 @@ const ProdiCard = ({title,description, accreditation,level}) => {
       className="
         font-[inter] bg-white 
         flex flex-col justify-between px-2 py-2
-        rounded-2xl shadow-lg hover:shadow-xl
+        rounded-2xl h-80 shadow-lg hover:shadow-xl
         transition-all duration-300 ease-in-out
-        w-72 h-auto lg:w-[420px] xl:w-[450px]
+        w-72 lg:w-[420px] xl:w-[450px]
       "
     >
       {/* Header */}
@@ -22,7 +20,7 @@ const ProdiCard = ({title,description, accreditation,level}) => {
         </div>
 
         {/* Badges */}
-        <div className="flex gap-1 sm:gap-2" role="group">
+        <div className="flex gap-2 " role="group">
           <span 
             className="
               px-4 py-1
@@ -54,7 +52,7 @@ const ProdiCard = ({title,description, accreditation,level}) => {
       <div className="px-4 flex-1 flex flex-col">
         <h3 
           className="
-            font-semibold text-black
+            font-semibold h-15 text-black flex items-center justify-start
             text-xl md:text-2xl xl:text-3xl
             leading-tight mb-3 
           "
@@ -64,8 +62,8 @@ const ProdiCard = ({title,description, accreditation,level}) => {
         
         <p className="
           font-light text-black
-          text-base h-30 xl:text-lg
-          leading-relaxed text-justify mb-4 sm:mb-6
+          text-base h-auto xl:text-lg
+          leading-relaxed text-justify mb-4 line-clamp-3
         ">
           {description}
         </p>
@@ -74,8 +72,8 @@ const ProdiCard = ({title,description, accreditation,level}) => {
         <button
           type="button"
           className="
-            w-full text-left
-            text-base lg:text-xl pb-5 md:pb-3 h-auto
+            w-full items-end justify-start text-left
+            text-base lg:text-xl py-2 md:pb-3 h-auto
             rounded-full font-medium text-black
             transition-all duration-300 ease-in-out
           "

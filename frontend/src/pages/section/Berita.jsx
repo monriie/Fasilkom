@@ -1,23 +1,34 @@
+import { useEffect, useState } from "react";
 import BeritaCard from "../../components/card/BeritaCard";
+import Loading from "../../services/Loading";
+import { getData } from "../../services/api";
 
 const Berita = () => {
-  const newsItems = [
-    {
-      id: 1,
-      title: "Kunjungan Fakultas Ilmu Komputer Universitas Sriwijaya ke IPB University Studi Banding SPMI dan Pengembangan Unit Usaha di Fasilkom",
-      image: "/api/placeholder/400/250",
-      type: "featured"
-    },
-    {
-      id: 2,
-      title: "Pelatihan & Sertifikasi Oracle...",
-      date: "6 Agustus 2025",
-      image: "/api/placeholder/300/200",
-      type: "training"
-    },
-  ];
-  const featuredItem = newsItems[0];
-  const regularItems = newsItems.slice(1, 3); // Ambil maksimal 2 item untuk card biasa
+  const [beritaData, setBeritaData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect (() => {
+      const fetchBerita = async () => {
+        try {
+          setLoading(true);
+          const data = await getData("berita");
+          setBeritaData(data.berita);
+          console.log(data.berita);
+        } catch (err) {
+          console.error('Error fetching Berita data:', err);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchBerita();
+    },[])
+  
+    
+    const featuredItem = beritaData[0];
+    const regularItems = beritaData.slice(1, 3); // Ambil maksimal 2 item untuk card biasa
+    
+    if(loading) return <Loading/>
 
   return (
     <section className="font-[inter] mt-4 w-full">
@@ -32,7 +43,10 @@ const Berita = () => {
         <div className="grid grid-cols-4 gap-2">
           {/* Featured News */}
           {featuredItem && (
-            <BeritaCard item={featuredItem} featured={true} />
+            <BeritaCard 
+            img={featuredItem.img} 
+            judul={featuredItem.judul}
+            featured={true} />
           )}
           
           {/* Button Lihat berita lainnya */}
@@ -45,14 +59,23 @@ const Berita = () => {
           {/* Featured News (Kolom 1) */}
           {featuredItem && (
             <div className="col-span-2 flex">
-              <BeritaCard item={featuredItem} featured={true} />
+              <BeritaCard 
+              img={featuredItem.img} 
+              judul={featuredItem.judul}
+              featured={true}
+              />
             </div>
           )}
           
           {/* Regular News Cards (Kolom 2) */}
           <div className="col-span-1">
-              {regularItems.map((item) => (
-                <BeritaCard key={item.id} item={item} />
+              {regularItems.map((berita) => (
+                <BeritaCard 
+                key={berita.id}
+                img={berita.img}
+                judul={berita.judul}
+                tanggal={berita.tanggal}
+                />
               ))}
           </div>
           

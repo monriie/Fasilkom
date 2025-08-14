@@ -1,56 +1,40 @@
 import { useEffect, useState } from "react";
 import AgendaCard from "../../components/card/AgendaCard";
+import { getData } from "../../services/api";
+import Loading from "../../services/Loading";
 
 const Agenda = () => {
-  const trainingItems = [
-    {
-      id: 1,
-      title: "Pelatihan & Sertifikasi Internasional",
-      image: "/api/placeholder/300/200",
-      logos: ["Oracle", "Adobe", "Nvidia", "Cisco"]
-    },
-    {
-      id: 2,
-      title: "Pelatihan & Sertifikasi Internasional",
-      image: "/api/placeholder/300/200", 
-      logos: ["Oracle", "Adobe", "Nvidia", "Cisco"]
-    },
-    {
-      id: 2,
-      title: "Pelatihan & Sertifikasi Internasional",
-      image: "/api/placeholder/300/200", 
-      logos: ["Oracle", "Adobe", "Nvidia", "Cisco"]
-    },
-    {
-      id: 2,
-      title: "Pelatihan & Sertifikasi Internasional",
-      image: "/api/placeholder/300/200", 
-      logos: ["Oracle", "Adobe", "Nvidia", "Cisco"]
-    },
-    {
-      id: 2,
-      title: "Pelatihan & Sertifikasi Internasional",
-      image: "/api/placeholder/300/200", 
-      logos: ["Oracle", "Adobe", "Nvidia", "Cisco"]
-    },
-    {
-      id: 2,
-      title: "Pelatihan & Sertifikasi Internasional",
-      image: "/api/placeholder/300/200", 
-      logos: ["Oracle", "Adobe", "Nvidia", "Cisco"]
-    },
-  ];
+  const [agendaData, setAgendaData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-
-  const limits = {
-    sm: 2,
-    md: 3,
-    lg: 8
-  };
-
-  const [screenSize, setScreenSize] = useState("lg");
-
-  useEffect(() => {
+  useEffect (() => {
+      const fetchAgenda = async () => {
+        try {
+          setLoading(true);
+          const data = await getData("agenda");
+          setAgendaData(data.agenda);
+          console.log(data.agenda);
+        } catch (err) {
+          console.error('Error fetching Agenda data:', err);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchAgenda();
+    },[])
+  
+    
+    
+    const limits = {
+      sm: 2,
+      md: 3,
+      lg: 8
+    };
+    
+    const [screenSize, setScreenSize] = useState("lg");
+    
+    useEffect(() => {
     const updateSize = () => {
       if (window.innerWidth < 640) {
         setScreenSize("sm");
@@ -60,14 +44,15 @@ const Agenda = () => {
         setScreenSize("lg");
       }
     };
-
+    
     updateSize(); // jalankan saat mount
     window.addEventListener("resize", updateSize);
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-
-  const displayedItems = trainingItems.slice(0, limits[screenSize]);
-
+  
+  const displayedItems = agendaData.slice(0, limits[screenSize]);
+  if(loading) return <Loading/>
+  
   return (
     <section className="font-[inter] mb-16 w-full">
       <div className="flex flex-col text-right my-8">
@@ -81,8 +66,12 @@ const Agenda = () => {
         <AgendaCard isPlaceholder={true} />
 
         {/* Training cards */}
-        {displayedItems.map((item,idx) => (
-          <AgendaCard key={idx} item={item} />
+        {displayedItems.map((agenda) => (
+          <AgendaCard 
+          key={agenda.ID}
+          img={agenda.img}
+          judul={agenda.judul}
+          />
         ))}
       </div>
     </section>

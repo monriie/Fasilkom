@@ -10,7 +10,7 @@ CREATE TABLE `akademik` (
     `created_at` datetime(3) DEFAULT NULL,
     `updated_at` datetime(3) DEFAULT NULL,
     `deleted_at` datetime(3) DEFAULT NULL,
-    `cover_akademik` longtext NOT NULL,
+    `coverakademik` longtext NOT NULL,
     `tanggal` datetime(3) NOT NULL,
     `deskripsi` longtext NOT NULL,
     `posted_at` datetime(3) DEFAULT NULL

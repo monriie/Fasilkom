@@ -10,7 +10,7 @@ CREATE TABLE `beasiswa` (
     `created_at` datetime(3) DEFAULT NULL,
     `updated_at` datetime(3) DEFAULT NULL,
     `deleted_at` datetime(3) DEFAULT NULL,
-    `cover_beasiswa` longtext NOT NULL,
+    `coverbeasiswa` longtext NOT NULL,
     `deskripsi` longtext NOT NULL,     
     `posted_at` datetime(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

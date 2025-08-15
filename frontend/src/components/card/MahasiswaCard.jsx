@@ -1,6 +1,6 @@
 const MahasiswaCard = ({data}) => {
   return (
-    <article className="font-[inter] flex min-h-60 items-center py-2 lg:py-4 lg:px-1 border-b border-gray-300 cursor-pointer transition-colors">
+    <article className="font-[inter] flex min-h-20 lg:min-h-60 items-center py-2 lg:py-4 lg:px-1 border-b border-gray-300 cursor-pointer transition-colors">
       <div className="flex-1">
         <h3 className="max-w-80 text-black text-sm lg:text-2xl font-normal leading-relaxed">
           {data.judul}

@@ -92,7 +92,7 @@ export const mahasiswa = [
   {
     ID: 1,
     img: "/assets/mahasiswa1.png",
-    judul: "Universitas Sriwijaya menyambut kedatangan 8 mahasiswa dari (Universiti Teknikal Malaysia Melaka)",
+    judul: "Universitas Sriwijaya menyambut kedatangan 8 mahasiswa dari Universiti Teknikal Malaysia Melaka",
   },
   {
     ID: 2,
@@ -115,22 +115,22 @@ export const beasiswa = [
   {
     ID: 1,
     img: "/assets/beasiswa1.png",
-    nama: "Beasiswa Bakti BCA"
+    judul: "Beasiswa Bakti BCA"
   },
   {
     ID: 2,
     img: "/assets/beasiswa2.png",
-    nama: "Beasiswa Unggulan"
+    judul: "Beasiswa Unggulan"
   },
   {
     ID: 3,
     img: "/assets/beasiswa3.png",
-    nama: "Bidikmisi / KIP-K"
+    judul: "Bidikmisi / KIP-K"
   },
   {
     ID: 4,
     img: "/assets/beasiswa4.png",
-    nama: "Beasiswa Bank Indonesia"
+    judul: "Beasiswa Bank Indonesia"
   }
 ];
 

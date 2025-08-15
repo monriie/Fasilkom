@@ -6,12 +6,11 @@ import Prodi from "./section/Prodi";
 import Akademik from "./section/Akademik";
 import { useEffect, useState } from "react";
 import KelPenelitian from "./section/KelPenelitian";
-import Mahasiswa from "./section/Mahasiswa";
-import Beasiswa from "./section/Beasiswa";
 import Ormawa from "./section/Ormawa";
 import Footer from "../components/Footer";
 import Berita from "./section/Berita";
 import Agenda from "./section/Agenda";
+import SectionMahasiswa from "./section/SectionMahasiswa";
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -92,10 +91,9 @@ const Home = () => {
         <Prodi />
         <Akademik />
         <KelPenelitian />
-        <section id="Mahasiswa" className="flex flex-col px-4 pt-8 pb-4 lg:px-12 items-center justify-around md:px-2 md:flex-row lg:flex-row">
-          <Mahasiswa/>
-          <div className="md:h-100 lg:h-220 md:border-2 md:border-[#D3D3D3] md:rounded-2xl lg:border-1 lg:border-[#D3D3D3] lg:rounded-2xl"/>
-          <Beasiswa/> 
+        <section id="Mahasiswa" className="relative grid grid-cols-1 md:grid-cols-2 items-start px-8 py-4 lg:px-12 md:px-2 ">
+          <SectionMahasiswa title="Kemahasiswaan & Kerja Sama" data="mahasiswa"/>
+          <SectionMahasiswa title="Beasiswa" data="beasiswa"/> 
         </section>
         <Ormawa/>
         <section id="Informasi" className="flex flex-col items-center justify-center p-4 lg:px-16">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AgendaCard from "../../components/card/AgendaCard";
 import { getData } from "../../services/api";
 import Loading from "../../services/Loading";
+import { getDummyData } from "../../data/dummyData";
 
 const Agenda = () => {
   const [agendaData, setAgendaData] = useState([]);
@@ -15,6 +16,8 @@ const Agenda = () => {
           setAgendaData(data.agenda);
           console.log(data.agenda);
         } catch (err) {
+          const data = getDummyData("agenda");
+          setAgendaData(data);
           console.error('Error fetching Agenda data:', err);
         } finally {
           setLoading(false);
@@ -56,12 +59,12 @@ const Agenda = () => {
   return (
     <section className="font-[inter] mb-16 w-full">
       <div className="flex flex-col text-right my-8">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 pb-2 sm:mb-0 border-b-2 border-[#D3D3D3]">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold pb-2 sm:mb-0 border-b-2 border-[#D3D3D3]">
           Agenda
         </h2>
       </div>
 
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-row justify-center gap-4">
         {/* Lihat agenda lainnya card */}
         <AgendaCard isPlaceholder={true} />
 

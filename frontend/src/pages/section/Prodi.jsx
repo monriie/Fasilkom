@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Loading from "../../services/Loading";
 import { getData } from "../../services/api";
+import { getDummyData } from "../../data/dummyData";
 
 const Prodi = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -19,6 +20,8 @@ const Prodi = () => {
         setProdiData(data.programstudi);
         console.log(data.programstudi);
       } catch (err) {
+        const data = getDummyData("programstudi");
+        setProdiData(data);
         console.error('Error fetching prodi data:', err);
       } finally {
         setLoading(false);
@@ -53,7 +56,7 @@ const Prodi = () => {
     if (scrollContainerRef.current) {
       const cardWidth =
         scrollContainerRef.current.children[0]?.offsetWidth || 0;
-      const gap = 30; // gap-6 = 24px
+      const gap = 30; //
       scrollContainerRef.current.scrollBy({
         left: cardWidth + gap,
         behavior: "smooth",
@@ -82,18 +85,18 @@ const Prodi = () => {
       {/* Left Section - Title */}
       <div
         className="
-        flex font-[inter] items-center justify-start
+        flex font-[inter] items-center justify-center text-left
         bg-[#6F370F] 
-        w-full h-auto md:w-60 lg:w-80 xl:w-96 md:h-auto
-        px-6 sm:px-8 md:px-10 lg:px-12
+        w-full h-auto md:w-40 lg:w-60 md:h-auto
+        px-6 sm:px-8 md:px-10
         py-8 lg:py-0
       "
       >
         <div className="text-left">
           <h1
             className="
-              font-bold text-white
-              text-2xl md:text-4xl xl:text-5xl 
+              font-semibold text-white
+              text-2xl md:text-3xl xl:text-4xl 
               leading-tight
               border-b-4 border-white
               pb-4 inline-block
@@ -121,7 +124,7 @@ const Prodi = () => {
       <div className="absolute inset-0 bg-[#6F370F]/30" aria-hidden="true" />
       
         {/* Slider Container */}
-        <div className="w-full max-w-xl md:max-w-2xl lg:max-3xl xl:max-w-5xl relative">
+        <div className="w-full max-w-xl md:max-w-2xl lg:max-w-6xl lg:ml-10 relative">
           {/* Navigation Buttons */}
           <button
             onClick={scrollLeft}

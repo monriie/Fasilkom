@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MahasiswaCard from "../../components/card/MahasiswaCard";
 import { getData } from "../../services/api";
 import Loading from "../../services/Loading";
+import { getDummyData } from "../../data/dummyData";
 
 const Mahasiswa = () => {
   const [mahasiswaData, setMahasiswaData] = useState([]);
@@ -15,6 +16,8 @@ const Mahasiswa = () => {
           setMahasiswaData(data.mahasiswa);
           console.log(data.mahasiswa);
         } catch (err) {
+          const data = getDummyData("mahasiswa");
+          setMahasiswaData(data);
           console.error('Error fetching Mahasiswa data:', err);
         } finally {
           setLoading(false);
@@ -31,7 +34,7 @@ const Mahasiswa = () => {
       <h2 className="text-black text-center text-2xl md:text-3xl lg:text-4xl md:h-25 flex md:flex-col items-center justify-center font-bold">
         Kemahasiswaan <span className="md:block lg:inline">& Kerja Sama</span>
       </h2>
-      <div className="flex flex-col mt-4 w-full">
+      <div className="flex flex-col mt-4 w-full justify-end md:h-92 lg:h-222">
         {mahasiswaData?.map((mahasiswa) => (
             <MahasiswaCard 
               key={mahasiswa.ID}
@@ -41,7 +44,7 @@ const Mahasiswa = () => {
             />
         ))}
       </div>
-      <button className="text-base w-85 lg:w-160 px-5 lg:py-2 lg:font-semibold lg:text-3xl border-b border-r border-l rounded-b-xl border-[#D3D3D3] lg:border-none hover:bg-gray-50 transition-colors">
+      <button className="text-base w-85 lg:w-128 px-5 lg:py-2 lg:font-semibold lg:text-3xl border-b border-r border-l rounded-b-xl border-[#D3D3D3] lg:border-none hover:bg-gray-50 transition-colors">
         Lihat lainnya
       </button>
     </section>

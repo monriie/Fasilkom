@@ -92,26 +92,22 @@ export const mahasiswa = [
   {
     ID: 1,
     img: "/assets/mahasiswa1.png",
-    judul: "Universitas Sriwijaya menyambut kedatangan 8 mahasiswa dari",
-    postedby: "Universiti Teknikal Malaysia Melaka"
+    judul: "Universitas Sriwijaya menyambut kedatangan 8 mahasiswa dari (Universiti Teknikal Malaysia Melaka)",
   },
   {
     ID: 2,
     img: "/assets/mahasiswa2.png",
-    judul: "Kuliah Umum AI and Research Trends oleh Dr. Suhaila Binti Mohammad Yusuf",
-    postedby: "Universiti Teknologi Malaysia"
+    judul: "Kuliah Umum AI and Research Trends oleh Dr. Suhaila Binti Mohammad Yusuf Universiti Teknologi Malaysia",
   },
   {
     ID: 3,
     img: "/assets/mahasiswa3.png",
     judul: "Fasilkom Universitas Sriwijaya bekerja sama dengan JAIST membuka kesempatan melalui JUMP",
-    postedby: ""
   },
   {
     ID: 4,
     img: "/assets/mahasiswa4.png",
     judul: "Kunjungan kerja Fasilkom Unsri ke IPB University untuk studi banding dan penjajakan kerja sama strategis",
-    postedby: ""
   }
 ];
 

@@ -40,7 +40,6 @@ const Mahasiswa = () => {
               key={mahasiswa.ID}
               img={mahasiswa.img}
               judul={mahasiswa.judul}
-              upload={mahasiswa.postedby}
             />
         ))}
       </div>

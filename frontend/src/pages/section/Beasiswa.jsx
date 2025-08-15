@@ -31,15 +31,16 @@ const Beasiswa = () => {
       <h2 className="text-black text-center text-2xl md:text-3xl md:h-22 flex items-center justify-center lg:pb-3 lg:text-4xl font-bold">
         Beasiswa
       </h2>
-      {beasiswaData?.map((beasiswa) => (
-        <div key={beasiswa.ID} className="flex flex-col px-4 mt-4 w-full">
-          <BeasiswaCard 
-            img={beasiswa.img}
-            nama={beasiswa.nama}
-            upload={beasiswa.postedby}
-          />
-        </div>
-      ))}
+      <div className="flex flex-col px-4 mt-4 w-full">
+        {beasiswaData?.map((beasiswa) => (
+            <BeasiswaCard 
+              key={beasiswa.ID}
+              img={beasiswa.img}
+              nama={beasiswa.nama}
+              upload={beasiswa.postedby}
+            />
+        ))}
+      </div>
       <button className="text-base w-85 lg:w-160 mb-4 lg:py-2 lg:font-semibold lg:text-3xl border-b border-r border-l rounded-b-xl border-[#D3D3D3] lg:border-none hover:bg-gray-50 transition-colors">
         Lihat lainnya
       </button>

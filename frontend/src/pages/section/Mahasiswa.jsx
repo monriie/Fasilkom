@@ -31,15 +31,16 @@ const Mahasiswa = () => {
       <h2 className="text-black text-center text-2xl md:text-3xl lg:text-4xl md:h-25 flex md:flex-col items-center justify-center font-bold">
         Kemahasiswaan <span className="md:block lg:inline">& Kerja Sama</span>
       </h2>
-      {mahasiswaData?.map((mahasiswa) => (
-        <div key={mahasiswa.ID} className="flex flex-col mt-4 w-full">
-          <MahasiswaCard 
-            img={mahasiswa.img}
-            judul={mahasiswa.judul}
-            upload={mahasiswa.postedby}
-          />
-        </div>
-      ))}
+      <div className="flex flex-col mt-4 w-full">
+        {mahasiswaData?.map((mahasiswa) => (
+            <MahasiswaCard 
+              key={mahasiswa.ID}
+              img={mahasiswa.img}
+              judul={mahasiswa.judul}
+              upload={mahasiswa.postedby}
+            />
+        ))}
+      </div>
       <button className="text-base w-85 lg:w-160 px-5 lg:py-2 lg:font-semibold lg:text-3xl border-b border-r border-l rounded-b-xl border-[#D3D3D3] lg:border-none hover:bg-gray-50 transition-colors">
         Lihat lainnya
       </button>

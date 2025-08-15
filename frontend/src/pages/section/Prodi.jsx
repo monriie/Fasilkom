@@ -170,16 +170,17 @@ const Prodi = () => {
               msOverflowStyle: "none",
             }}
           >
-            {prodiData?.map((prodi) => (
-              <div key={prodi.ID} className="flex-shrink-1 snap-center mx-2">
-                <ProdiCard
-                  jurusan={prodi.jurusan}
-                  deskripsi={prodi.deskripsi}
-                  akreditasi={prodi.akreditasi}
-                  jenjang={prodi.jenjang}
-                />
-              </div>
-            ))}
+            <div className="flex flex-row gap-8">
+              {prodiData?.map((prodi) => (
+                  <ProdiCard
+                    key={prodi.ID}
+                    jurusan={prodi.jurusan}
+                    deskripsi={prodi.deskripsi}
+                    akreditasi={prodi.akreditasi}
+                    jenjang={prodi.jenjang}
+                  />
+              ))}
+            </div>
           </div>
         </div>
       </div>

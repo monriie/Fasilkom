@@ -34,15 +34,16 @@ const Akademik = () => {
           <h1 className="text-left text-2xl md:text-3xl lg:text-4xl font-bold border-b-2 border-[#D3D3D3]">
             Akademik & Penelitian
           </h1>
-          {akademikData?.map((akademik) =>(
-            <div key={akademik.ID} className="flex flex-wrap justify-center items-center mt-5">
-              <AkademikCard 
-                img={akademik.img}
-                tanggal={akademik.tanggal}
-                judul={akademik.judul}
-              />
-            </div>
-          ))}
+          <div className="flex justify-center items-center mt-5 gap-4">
+            {akademikData?.map((akademik) =>(
+                <AkademikCard 
+                  key={akademik.ID}
+                  img={akademik.img}
+                  tanggal={akademik.tanggal}
+                  judul={akademik.judul}
+                />
+            ))}
+          </div>
         </div>
       </section>
     </>

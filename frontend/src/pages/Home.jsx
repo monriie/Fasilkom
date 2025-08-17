@@ -92,7 +92,7 @@ const Home = () => {
         <Akademik />
         <KelPenelitian />
         <section id="Mahasiswa" className="relative grid grid-cols-1 md:grid-cols-2 items-start px-8 py-4 lg:px-12 md:px-2 ">
-          <SectionMahasiswa title="Kemahasiswaan & Kerja Sama" data="mahasiswa"/>
+          <SectionMahasiswa title="Kemahasiswaan & Kerja Sama" data="kemahasiswaan"/>
           <SectionMahasiswa title="Beasiswa" data="beasiswa"/> 
         </section>
         <Ormawa/>

@@ -88,7 +88,7 @@ export const agenda = [
   }
 ];
 
-export const mahasiswa = [
+export const kemahasiswaan = [
   {
     ID: 1,
     img: "/assets/mahasiswa1.png",
@@ -145,8 +145,8 @@ export const getDummyData = (data) => {
       return  berita ;
     case 'agenda':
       return  agenda ;
-    case 'mahasiswa':
-      return  mahasiswa ;
+    case 'kemahasiswaan':
+      return  kemahasiswaan ;
     case 'beasiswa':
       return  beasiswa ;
     default:
